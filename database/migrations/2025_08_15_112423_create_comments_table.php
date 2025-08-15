@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
             
             // 인덱스
-            $table->index(['post_id', 'created_at']);
+            $table->index(['post_id', 'is_delete', 'created_at']);
         });
     }
 
