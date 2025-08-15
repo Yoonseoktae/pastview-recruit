@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
 class Comment extends Model
 {
     use HasFactory;
@@ -15,6 +14,7 @@ class Comment extends Model
         'post_id',
         'content',
         'author',
+        'is_delete'
     ];
 
     public function post(): BelongsTo
