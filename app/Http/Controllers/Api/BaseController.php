@@ -66,5 +66,13 @@ class BaseController extends Controller
         return response()->json($result, $code);
     }
 
+    /**
+     * 404 에러
+     */
+    protected function notFound($message = '리소스를 찾을 수 없습니다.')
+    {
+        return $this->error($message, 404);
+    }
+
 
 }

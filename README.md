@@ -10,6 +10,7 @@
 - Repository: GitHub
 
 2. 관련 URL
+- [API Documentation](./API_DOCS.md)
 - local Endpoint : http://localhost:8000
 - Live Endpoint: https://pastview-recruit-production.up.railway.app
 - Github : https://github.com/Yoonseoktae/pastview-recruit
@@ -18,6 +19,7 @@
     - Mysql : https://railway.com/invite/kD6yHkNbPW5
 
 3. 프로젝트 구조
+<pre>
 pastview-recruit/
 ├── app/
 │   ├── Http/
@@ -41,7 +43,7 @@ pastview-recruit/
 ├── composer.json
 ├── railway.json
 └── README.md
-
+</pre>
 
 4. 실행방법
 ```bash
