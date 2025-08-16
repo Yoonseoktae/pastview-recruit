@@ -10,6 +10,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $attributes = ['is_delete' => 0];
+    
     protected $fillable = [
         'post_id',
         'content',
