@@ -19,6 +19,11 @@ class Comment extends Model
         'is_delete'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+    
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
