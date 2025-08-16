@@ -19,8 +19,7 @@ class PostController extends BaseController
             $search = $request->input('search');
             $query->where(function($q) use ($search) {
                 $q->where('title', 'LIKE', "%{$search}%")
-                    ->orWhere('content', 'LIKE', "%{$search}%")
-                    ->orWhere('author', 'LIKE', "%{$search}%");
+                    ->orWhere('content', 'LIKE', "%{$search}%");
             });
         }
         
