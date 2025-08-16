@@ -18,6 +18,7 @@
     - Mysql : https://railway.com/invite/kD6yHkNbPW5
 
 3. 프로젝트 구조
+<pre>
 pastview-recruit/
 ├── app/
 │   ├── Http/
@@ -41,7 +42,7 @@ pastview-recruit/
 ├── composer.json
 ├── railway.json
 └── README.md
-
+</pre>
 
 4. 실행방법
 ```bash
