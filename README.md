@@ -10,6 +10,7 @@
 - Repository: GitHub
 
 2. 관련 URL
+- [POSTMAN Collection](./postman)
 - [API Documentation](./API_DOCS.md)
 - local Endpoint : http://localhost:8000
 - Live Endpoint: https://pastview-recruit-production.up.railway.app
