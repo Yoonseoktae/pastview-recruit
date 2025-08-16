@@ -44,7 +44,12 @@ class PostController extends BaseController
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        
+        $post = Post::find($id);
+        if (!$post || $post->is_delete == 1) {
+            return $this->notFound('게시글을 찾을 수 없습니다.');
+        }
+
         return $this->success($post, '게시글 조회 완료');
     }
     
@@ -53,7 +58,7 @@ class PostController extends BaseController
      */
     public function update(PostRequest $request, $id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::find($id);
 
         $post->update($request->validated());
         
@@ -65,7 +70,7 @@ class PostController extends BaseController
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::find($id);
         $post->is_delete = 1;
         $post->save();
         return $this->success(null, "게시글 삭제 완료");
@@ -76,22 +81,24 @@ class PostController extends BaseController
      */
     public function getComments($id, Request $request)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::find($id);
 
         $perPage = $request->input('per_page', 10);
         $sortOrder = $request->input('sort_order', 'asc');
         
         $comments = $post->comments()
+                        ->where('is_delete', 0)
                         ->orderBy('created_at', $sortOrder)
                         ->paginate($perPage);
 
-        $response = [
-            'post_id' => $post->id,
-            'comment_cnt' => $post->comments()->where('is_delete', 0)->count(),
-            'pagination' => $this->paginated($comments, "'{$post->title}' 댓글 목록")
-        ];
+        $comments->getCollection()->transform(function ($comment) use ($post) {
+            $comment->post_id = $post->id;
+            $comment->post_title = $post->title;
+            $comment->post_author = $post->author;
+            return $comment;
+        });
 
-        return $this->success($response, "'{$post->title}' 댓글 목록");
+        return $this->paginated($comments, "'{$post->title}' 댓글 목록");
         
     }
 

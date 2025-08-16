@@ -36,8 +36,12 @@ class CommentController extends BaseController
      */
     public function show($id)
     {
-        $comment = Comment::findOrFail($id);
+        $comment = Comment::find($id);
 
+        if (!$comment || $comment->is_delete == 1) {
+            return $this->notFound('댓글을 찾을 수 없습니다.');
+        }
+        
         return $this->success($comment, '댓글 조회 완료');
     }
 
@@ -46,7 +50,7 @@ class CommentController extends BaseController
      */
     public function update(CommentRequest $request, $id)
     {
-        $comment = Comment::findOrFail($id);
+        $comment = Comment::find($id);
         $comment->update($request->validated());
 
         return $this->success($comment, '댓글 수정 완료');
@@ -57,7 +61,7 @@ class CommentController extends BaseController
      */
     public function destroy($id)
     {
-        $comment = Comment::findOrFail($id);
+        $comment = Comment::find($id);
 
         $comment->is_delete = 1;
         $comment->save();
