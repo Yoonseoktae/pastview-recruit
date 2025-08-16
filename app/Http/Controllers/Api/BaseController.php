@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class BaseController extends Controller
 {
     /**
-     * 페이지네이션 정보
+     * 페이지네이션 포함 성공 응답
      * @param   object    $data
      * @param   string    $message
      * @return  object
@@ -15,7 +15,6 @@ class BaseController extends Controller
     protected function paginated($data, $message = 'success')
     {
         return response()->json([
-            'result' => true,
             'message' => $message,
             'data' => $data->items(),
             'pagination' => [
@@ -38,15 +37,12 @@ class BaseController extends Controller
      */
     protected function success($data = null, $message = 'success', $code = 200)
     {
-        $result = [
-            'result' => true,
-            'message' => $message,
-        ];
-
+        $result = ['message' => $message];
+    
         if ($data) {
             $result['data'] = $data;
         }
-
+        
         return response()->json($result, $code);
     }
 
@@ -60,7 +56,6 @@ class BaseController extends Controller
     protected function error($message = 'error', $code = 400, $errors = null)
     {
         $result = [
-            'result' => false,
             'message' => $message,
         ];
 
