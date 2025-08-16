@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title', 255)->comment('제목');
             $table->text('content')->comment('내용');
             $table->string('author', 50)->comment('작성자');
-            $table->tinyInteger('is_delete')->comment('삭제여부');
+            $table->tinyInteger('is_delete')->default(0)->comment('삭제여부');
             $table->timestamps();
 
             // 인덱스

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id')->comment('게시글 ID');
             $table->text('content')->comment('댓글 내용');
             $table->string('author', 50)->comment('댓글 작성자');
-            $table->tinyInteger('is_delete')->comment('삭제 여부');
+            $table->tinyInteger('is_delete')->default(0)->comment('삭제 여부');
             $table->timestamps();
             
             // 인덱스
