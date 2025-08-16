@@ -10,7 +10,7 @@
 - Repository: GitHub
 
 2. 관련 URL
-- [API Documentation](./API_DOCUMENTATION.md)
+- [API Documentation](./API_DOCS.md)
 - local Endpoint : http://localhost:8000
 - Live Endpoint: https://pastview-recruit-production.up.railway.app
 - Github : https://github.com/Yoonseoktae/pastview-recruit
